@@ -1,3 +1,10 @@
+// Euge, te paso mis observaciones sobre el codigo. 
+// En general lo veo muy bien: tu codigo es prolijo, ordenado, claro. 
+// Se que en este momento debes estar *podrida* del TP pero cuando quieras continuarlo, 
+// yo mas que feliz de ayudar. Se que tenes la capacidad de hacer las funciones que siguen, 
+// porque lograste resolver las mas dificiles. 
+// Por ahora, a darle duro a DOM! 
+
 var local = {
   vendedoras: ["Ada", "Grace", "Hedy", "Sheryl"],
 
@@ -35,6 +42,10 @@ function precioMaquina(componentes) {
     }
   }
   return precioTotal
+  
+  // esto es un detalle, pero si fueramos a hacer un ejercicio para una entrevista, por ejemplo
+  // seria muy importante borrar todos los console.log
+  // Los console.log nos sirven mientras codeamos, pero deben sacarse al entregar el producto
 }
 console.log(precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]))
 //SEGUNDO EJERCICIO
@@ -48,6 +59,8 @@ function cantidadVentasComponente(componentes) {
     }
   }
   return sumaCantidadVentas
+  
+  // bien!
 }
 console.log(cantidadVentasComponente("Monitor ASC 543")); // 2*/
 //TERCER EJERCICIO
@@ -80,6 +93,40 @@ function vendedoraDelMes(mes, anio) {
   }
 }
 console.log(vendedoraDelMes(1, 2019)); // "Ada" (vendio por $670, una máquina de $320 y otra de $350)
+
+// Una alternativa para no "hardcodear" los nombres
+// (leela tranqui y si hay dudas me escribis)
+
+// function vendedoraDelMes (mes,anio){
+//     var arrayVendedoras = [];
+//     for(var j = 0; j < local.vendedoras.length; j++){
+//         var objetoNuevo = 
+//         {   nombre: local.vendedoras[j],
+//             ventas: 0,
+//         }
+//         for(var i = 0; i < local.ventas.length; i++){
+//             if(local.ventas[i].fecha.getMonth()+1 == mes && local.ventas[i].fecha.getFullYear() == anio){
+//                 if(objetoNuevo.nombre == local.ventas[i].nombreVendedora){
+//                         objetoNuevo.ventas = objetoNuevo.ventas + precioMaquina(local.ventas[i].componentes)
+//                 }
+//             }
+//         }
+//         arrayVendedoras.push(objetoNuevo)
+//     }
+//     var valorMaximo = 0;
+//     var nombreVendedora = "";
+//     for(var k = 0; k < arrayVendedoras.length; k++){
+//         if(valorMaximo < arrayVendedoras[k].ventas){
+//             valorMaximo = arrayVendedoras[k].ventas;
+//             nombreVendedora = arrayVendedoras[k].nombre;
+//         }
+//     }
+//     return nombreVendedora
+// }
+
+
+
+
 //CUARTO EJERCICIO
 
 function ventasMes(mes, anio) {
@@ -91,6 +138,9 @@ function ventasMes(mes, anio) {
   }
   return acumulador
 }
+
+// bien
+
 console.log(ventasMes(1, 2019)); // 1250
 //EJERCICIO CINCO
 //Obtener las ventas totales realizadas por una vendedora sin límite de fecha.
@@ -135,6 +185,9 @@ console.log(componenteMasVendido()); // Monitor GPRS 3000
 // indica si hubo ventas en un mes determinado.
 function huboVentas(mes, anio) {
  ventasMes=false
+  // ojo aca, estas asignandole valor a la variable "ventasMes" sin haberla definido antes
+  // deberia ser 
+  // var ventasMes = false
   for (let i = 0; i < local.ventas.length; i++) {
     if (local.ventas[i].fecha.getMonth() + 1 == mes && local.ventas[i].fecha.getFullYear() == anio) {
       ventasMes=true
@@ -154,6 +207,10 @@ console.log(huboVentas(3, 2019)); // false
 // fecha, nombreVendedora, componentes, sucursal
 for (let index = 0; index < local.ventas.length; index++) {
   local.ventas.componentes = "sucursales"
+  // ojo, aca estas modificando los componentes, no el array ventas
+  // deberia ser asi:
+  // local.ventas.sucursal = "Centro"
+  // para que todas las ventas hechas hasta ahora reflejen que fueron hechas en la sucursal del Centro
   console.log(local.ventas)
 }
 local.sucursales = ["Centro", "Caballito"];
